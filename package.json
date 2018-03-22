@@ -1,9 +1,15 @@
 {
-  "name": "npm-base",
+  "name": "bankcard-reader",
   "author": "waiting",
   "version": "0.0.1",
-  "description": "npm boilerplate",
-  "keywords": [],
+  "description": "高拍仪读取银行卡",
+  "keywords": [
+    "bankcard",
+    "rfic",
+    "高拍仪",
+    "银行卡",
+    "非接触"
+  ],
   "engines": {
     "node": ">=8.9.0"
   },
@@ -11,12 +17,12 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bugs": {
-    "url": "https://github.com/waitingsong/npm-base/issues"
+    "url": "https://github.com/waitingsong/node-bankcard-reader/issues"
   },
-  "homepage": "https://github.com/waitingsong/npm-base#readme",
+  "homepage": "https://github.com/waitingsong/node-bankcard-reader#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waitingsong/npm-base.git"
+    "url": "git+https://github.com/waitingsong/node-bankcard-reader.git"
   },
   "license": "MIT",
   "nyc": {
@@ -39,9 +45,11 @@
     "all": true
   },
   "dependencies": {
+    "ffi": "^2.2.0",
     "typescript": "^2.7.2"
   },
   "devDependencies": {
+    "@types/ffi": "^0.1.0",
     "@types/mocha": "^2.2.48",
     "@types/node": "^9.4.7",
     "@types/power-assert": "^1.4.29",
