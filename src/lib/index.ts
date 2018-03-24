@@ -2,6 +2,7 @@ import * as ffi from 'ffi'
 
 import {
   isFileExists,
+  logger,
   normalize,
 } from '../shared/index'
 
@@ -69,8 +70,3 @@ async function validateDllFiles(opts: Options): Promise<void> {
   }
 }
 
-
-export function logger(data: any) {
-  // tslint:disable-next-line
-  console.log(data)
-}
