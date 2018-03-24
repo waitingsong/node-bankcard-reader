@@ -1,7 +1,7 @@
 import * as ffi from 'ffi'
 
 import {
-  isFileExists,
+  isPathAcessible,
   logger,
   normalize,
 } from '../shared/index'
@@ -34,6 +34,7 @@ async function init(args: Options): Promise<[DeviceOptions, DllMethod]> {
   if (typeof opts.dllPath === 'undefined' || !opts.dllPath) {
     return Promise.reject('params dllPath undefined or blank')
   }
+  await validateDllFiles(opts.dllPath)
   opts.dllPath = normalize(opts.dllPath)
   opts.debug = !! opts.debug
 
@@ -42,7 +43,6 @@ async function init(args: Options): Promise<[DeviceOptions, DllMethod]> {
   }
   opts.debug && logger(opts)
 
-  await validateDllFiles(opts)
   return [opts, <DllMethod> ffi.Library(opts.dllPath, ffiDef)]
 }
 
@@ -64,9 +64,18 @@ function parseBuffer(buf: Buffer): string {
   return buf.toString('utf8').trim().replace(/\0/g, '')
 }
 
-async function validateDllFiles(opts: Options): Promise<void> {
-  if (! await isFileExists(opts.dllPath)) {
-    throw new Error('File not exists: ' + opts.dllPath)
+async function validateDllFiles(path: string): Promise<void> {
+  if (! path) {
+    throw new Error('File path empth ')
   }
+  // only filename. can be loaded by search path such as %system%
+  if (! path.includes('/')) {
+    return
+  }
+  // absolute path
+  if (await isPathAcessible(path)) {
+    return
+  }
+  throw new Error('File not exists: ' + path)
 }
 
