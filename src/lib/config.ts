@@ -1,5 +1,5 @@
 import {
-  FfiDef,
+  DllFuncs,
   Options,
 } from './model'
 
@@ -13,7 +13,7 @@ export const initialOpts: Options = {
 }
 
 
-export const ffiDef: FfiDef = {
+export const dllFuncs: DllFuncs = {
   JC_GetBankNumber: ['int', ['pointer'] ], // 接触获取银行卡卡号
   FJ_GetBankNumber: ['int', ['pointer'] ], // 非接获取银行卡卡号
   // CT_GetBankNumber: ['int', ['int', 'int', 'pointer', 'pointer']], // 磁条获取银行卡卡号

@@ -6,10 +6,10 @@ import {
   normalize,
 } from '../shared/index'
 
-import { ffiDef, initialOpts } from './config'
+import { dllFuncs, initialOpts } from './config'
 import {
   DeviceOptions,
-  DllMethod,
+  DllFuncsModel,
   Options,
 } from './model'
 
@@ -28,7 +28,7 @@ export async function read(args: Options): Promise<string> {
   })
 }
 
-async function init(args: Options): Promise<[DeviceOptions, DllMethod]> {
+async function init(args: Options): Promise<[DeviceOptions, DllFuncsModel]> {
   const opts = <DeviceOptions> { ...initialOpts, ...args }
 
   if (typeof opts.dllPath === 'undefined' || !opts.dllPath) {
@@ -43,17 +43,17 @@ async function init(args: Options): Promise<[DeviceOptions, DllMethod]> {
   }
   opts.debug && logger(opts)
 
-  return [opts, <DllMethod> ffi.Library(opts.dllPath, ffiDef)]
+  return [opts, <DllFuncsModel> ffi.Library(opts.dllPath, dllFuncs)]
 }
 
-function readFJ(api: DllMethod): string {
+function readFJ(api: DllFuncsModel): string {
   const buf = Buffer.alloc(128)
 
   api.FJ_GetBankNumber(buf)
   return parseBuffer(buf)
 }
 
-function readJC(api: DllMethod): string {
+function readJC(api: DllFuncsModel): string {
   const buf = Buffer.alloc(128)
 
   api.JC_GetBankNumber(buf)

@@ -9,19 +9,18 @@ export interface DeviceOptions extends Options {
   debug: boolean
 }
 
-
+export type FnCallParams = string[] | never[] // calling params
+export type FnParams = [string, FnCallParams] // def for ffi [returnType, [calling param, ...]]
+export interface DllFuncs {
+  [fn: string]: FnParams
+}
 
 // dll接口方法
-export interface DllMethod {
+export interface DllFuncsModel {
   JC_GetBankNumber(bankNum: Buffer): number // 接触获取银行卡卡号
   FJ_GetBankNumber(bankNum: Buffer): number   // 非接获取银行卡卡号
   // CT_GetBankNumber(track: number, ctime: number, len: Buffer, Data: Buffer): number  // 磁条获取银行卡卡号
   // ReadCard(time: string, data2: Buffer, nlen2: Buffer, data3: Buffer, nlen3: Buffer): number  // 读2、3磁道数据
-}
-
-// ffi调用dll方法定义
-export interface FfiDef {
-  [fn: string]: [string, string[]]
 }
 
 
