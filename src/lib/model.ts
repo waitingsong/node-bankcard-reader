@@ -3,7 +3,7 @@ import { DModel as DM } from 'win32-def'
 export interface Options {
   cardType?: CardType
   debug?: boolean
-  dllPath: string // path of dll
+  dllPath?: string // path of dll default as dll/
   dllSearchPath?: string // kernel32.SetDllDirectory(dllSearchPath)
 }
 export interface DeviceOptions extends Options {
