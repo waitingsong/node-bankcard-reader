@@ -9,7 +9,6 @@ export const initialOpts: Options = {
   cardType: 'auto',
   debug: false,
   dllPath: '',
-  findCardRetryTimes: 5,
   dllSearchPath: '',
 }
 

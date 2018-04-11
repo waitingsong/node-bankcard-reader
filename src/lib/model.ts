@@ -4,7 +4,6 @@ export interface Options {
   cardType?: CardType
   debug?: boolean
   dllPath: string // path of dll
-  findCardRetryTimes?: number    // 找卡重试数量，间隔1sec
   dllSearchPath?: string // kernel32.SetDllDirectory(dllSearchPath)
 }
 export interface DeviceOptions extends Options {
