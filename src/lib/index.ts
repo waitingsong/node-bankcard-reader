@@ -50,11 +50,6 @@ async function init(args: Options): Promise<[DeviceOptions, DllFuncsModel]> {
   await validateDllFiles(opts.dllPath)
   opts.dllPath = normalize(opts.dllPath)
   opts.debug = !! opts.debug
-
-  // if (typeof opts.findCardRetryTimes === 'undefined' || isNaN(opts.findCardRetryTimes) || opts.findCardRetryTimes < 0) {
-  //   opts.findCardRetryTimes = 5
-  // }
-
   opts.debug && logger(opts)
   SetDllDirectory(opts.dllSearchPath)
 

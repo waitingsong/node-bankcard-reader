@@ -1,4 +1,4 @@
-import { DModel as DM, DTypes as DT } from 'win32-def'
+import { DModel as DM } from 'win32-def'
 
 export interface Options {
   cardType?: CardType
