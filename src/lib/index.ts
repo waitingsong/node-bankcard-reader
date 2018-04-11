@@ -43,11 +43,11 @@ export async function read(args: Options): Promise<string> {
   })
 }
 
-async function init(args: Options): Promise<[DeviceOptions, DllFuncsModel]> {
-  const opts = <DeviceOptions> { ...initialOpts, ...args }
+async function init(args?: Options): Promise<[DeviceOptions, DllFuncsModel]> {
+  const opts = <DeviceOptions> (args ? { ...initialOpts, ...args } : { ...initialOpts })
 
   if (typeof opts.dllPath === 'undefined' || !opts.dllPath) {
-    return Promise.reject('params dllPath undefined or blank')
+    opts.dllPath = join(__dirname, '../../dll')
   }
   await validateDllFiles(opts.dllPath)
   opts.dllPath = normalize(opts.dllPath)
