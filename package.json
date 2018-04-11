@@ -1,7 +1,7 @@
 {
   "name": "bankcard-reader",
   "author": "waiting",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "高拍仪读取银行卡",
   "keywords": [
     "bankcard",
