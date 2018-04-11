@@ -67,6 +67,9 @@ function SetDllDirectory(path: any): boolean {
   const k32 = <Kernel32Model> ffi.Library('kernel32', k32Funcs)
   const search = path && typeof path === 'string' ? path : join(__dirname, '../../dll')
 
+  // fix for use of require('bankcard-reader')
+  process.env.PATH = `${process.env.PATH};${search}`
+
   return k32.SetDllDirectoryW(Buffer.from(search))
 }
 
