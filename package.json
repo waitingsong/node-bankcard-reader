@@ -2,13 +2,13 @@
   "name": "bankcard-reader",
   "author": "waiting",
   "version": "0.0.1",
-  "description": "¸ßÅÄÒÇ¶ÁÈ¡ÒøÐÐ¿¨",
+  "description": "é«˜æ‹ä»ªè¯»å–é“¶è¡Œå¡",
   "keywords": [
     "bankcard",
     "rfic",
-    "¸ßÅÄÒÇ",
-    "ÒøÐÐ¿¨",
-    "·Ç½Ó´¥"
+    "é«˜æ‹ä»ª",
+    "é“¶è¡Œå¡",
+    "éžæŽ¥è§¦"
   ],
   "engines": {
     "node": ">=8.10.0"
