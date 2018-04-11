@@ -47,7 +47,7 @@ async function init(args?: Options): Promise<[DeviceOptions, DllFuncsModel]> {
   const opts = <DeviceOptions> (args ? { ...initialOpts, ...args } : { ...initialOpts })
 
   if (typeof opts.dllPath === 'undefined' || !opts.dllPath) {
-    opts.dllPath = join(__dirname, '../../dll')
+    opts.dllPath = join(__dirname, '../../dll/HSBankCardInfo.dll')
   }
   await validateDllFiles(opts.dllPath)
   opts.dllPath = normalize(opts.dllPath)
