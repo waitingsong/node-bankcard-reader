@@ -47,6 +47,9 @@
   "dependencies": {
     "ffi": "^2.2.0"
   },
+  "os": [
+    "win32"
+  ],
   "devDependencies": {
     "@types/ffi": "^0.1.0",
     "@types/mocha": "^5.0.0",
