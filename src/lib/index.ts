@@ -16,6 +16,8 @@ import {
   Options,
 } from './model'
 
+export { Options }
+
 
 // read card data
 export async function read(args: Options): Promise<string> {
