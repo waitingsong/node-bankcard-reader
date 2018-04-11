@@ -57,13 +57,13 @@ async function init(args: Options): Promise<[DeviceOptions, DllFuncsModel]> {
 }
 
 // set loading path of ssse32.dll
-function SetDllDirectory(path): boolean {
+function SetDllDirectory(path: any): boolean {
   const k32Funcs = {
     SetDllDirectoryW: [DT.BOOLEAN, [DT.LPCSTR] ],
     // GetDllDirectoryW: ['int', ['int', 'pointer'] ],
   }
   const k32 = <Kernel32Model> ffi.Library('kernel32', k32Funcs)
-  const search = path ? path : join(__dirname, '../../dll')
+  const search = path && typeof path === 'string' ? path : join(__dirname, '../../dll')
 
   return k32.SetDllDirectoryW(Buffer.from(search))
 }
