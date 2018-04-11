@@ -1,7 +1,7 @@
 {
   "name": "bankcard-reader",
   "author": "waiting",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "高拍仪读取银行卡",
   "keywords": [
     "bankcard",
@@ -11,7 +11,7 @@
     "非接触"
   ],
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=8.10.0"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -82,7 +82,7 @@
     "lint": "tslint --fix -p tsconfig.json -t stylish",
     "lint:t": "tslint --fix -p test/tsconfig.json -t stylish",
     "prepublishOnly": "npm run build",
-    "repo:init": "git config --global core.hooksPath ./.githooks && echo It may going for long time. Plese wait... && npm i && ts-node .githooks/init.ts",
+    "repo:init": "git config --local core.hooksPath ./.githooks && echo It may going for long time. Plese wait... && npm i && ts-node .githooks/init.ts",
     "test": "mocha --opts test/mocha.opts",
     "tsc": "tsc -p tsconfig.json",
     "tsc:w": "tsc -p tsconfig.json -w"
