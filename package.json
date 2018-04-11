@@ -45,7 +45,8 @@
     "all": true
   },
   "dependencies": {
-    "ffi": "^2.2.0"
+    "ffi": "^2.2.0",
+    "win32-def": "^2.0.0"
   },
   "os": [
     "win32"

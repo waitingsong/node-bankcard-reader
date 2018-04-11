@@ -10,6 +10,7 @@ export const initialOpts: Options = {
   debug: false,
   dllPath: '',
   findCardRetryTimes: 5,
+  dllSearchPath: '',
 }
 
 

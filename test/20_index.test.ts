@@ -5,6 +5,7 @@ import * as assert from 'power-assert'
 
 import * as bcr from '../src/lib/index'
 import { Options } from '../src/lib/model'
+import { join } from '../src/shared/index'
 
 
 const filename = basename(__filename)
@@ -12,10 +13,11 @@ const filename = basename(__filename)
 describe(filename, () => {
 
   it('Should read() works', async () => {
+    const dll = join(__dirname, '../dll/hsbankcardinfo.dll')
     const opts: Options = {
       cardType: 'auto',
       debug: false,
-      dllPath: 'hsbankcardinfo.dll',
+      dllPath: dll,
     }
 
     try {

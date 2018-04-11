@@ -1,8 +1,11 @@
+import { DModel as DM, DTypes as DT } from 'win32-def'
+
 export interface Options {
   cardType?: CardType
   debug?: boolean
   dllPath: string // path of dll
   findCardRetryTimes?: number    // 找卡重试数量，间隔1sec
+  dllSearchPath?: string // kernel32.SetDllDirectory(dllSearchPath)
 }
 export interface DeviceOptions extends Options {
   cardType: CardType
@@ -17,10 +20,15 @@ export interface DllFuncs {
 
 // dll接口方法
 export interface DllFuncsModel {
-  JC_GetBankNumber(bankNum: Buffer): number // 接触获取银行卡卡号
-  FJ_GetBankNumber(bankNum: Buffer): number   // 非接获取银行卡卡号
-  // CT_GetBankNumber(track: number, ctime: number, len: Buffer, Data: Buffer): number  // 磁条获取银行卡卡号
-  // ReadCard(time: string, data2: Buffer, nlen2: Buffer, data3: Buffer, nlen3: Buffer): number  // 读2、3磁道数据
+  JC_GetBankNumber(bankNum: DM.POINT): DM.INT // 接触获取银行卡卡号
+  FJ_GetBankNumber(bankNum: DM.POINT): DM.INT // 非接获取银行卡卡号
 }
+
+
+export interface Kernel32Model {
+  SetDllDirectoryW(lpPathName: DM.LPCTSTR): DM.BOOLEAN
+  GetDllDirectoryW(nBufferLength: DM.DWORD, lpBuffer: DM.LPTSTR): DM.DWORD
+}
+
 
 export type CardType = 'jc' | 'fj' | 'auto' // 接触，非接触，auto轮询

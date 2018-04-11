@@ -1,7 +1,9 @@
 import * as ffi from 'ffi'
+import { DTypes as DT } from 'win32-def'
 
 import {
   isPathAcessible,
+  join,
   logger,
   normalize,
 } from '../shared/index'
@@ -10,6 +12,7 @@ import { dllFuncs, initialOpts } from './config'
 import {
   DeviceOptions,
   DllFuncsModel,
+  Kernel32Model,
   Options,
 } from './model'
 
@@ -51,9 +54,23 @@ async function init(args: Options): Promise<[DeviceOptions, DllFuncsModel]> {
   if (typeof opts.findCardRetryTimes === 'undefined' || isNaN(opts.findCardRetryTimes) || opts.findCardRetryTimes < 0) {
     opts.findCardRetryTimes = 5
   }
+
   opts.debug && logger(opts)
+  SetDllDirectory(opts.dllSearchPath)
 
   return [opts, <DllFuncsModel> ffi.Library(opts.dllPath, dllFuncs)]
+}
+
+// set loading path of ssse32.dll
+function SetDllDirectory(path): boolean {
+  const k32Funcs = {
+    SetDllDirectoryW: [DT.BOOLEAN, [DT.LPCSTR] ],
+    // GetDllDirectoryW: ['int', ['int', 'pointer'] ],
+  }
+  const k32 = <Kernel32Model> ffi.Library('kernel32', k32Funcs)
+  const search = path ? path : join(__dirname, '../../dll')
+
+  return k32.SetDllDirectoryW(Buffer.from(search))
 }
 
 function readFJ(api: DllFuncsModel): string {
