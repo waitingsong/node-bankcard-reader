@@ -20,7 +20,7 @@ export { Options }
 
 
 // read card data
-export async function read(args: Options): Promise<string> {
+export async function read(args?: Options): Promise<string> {
   return init(args).then(([opts, api]) => {
     switch (opts.cardType) {
       case 'fj':

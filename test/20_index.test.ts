@@ -29,4 +29,15 @@ describe(filename, () => {
       assert(false, ex)
     }
   })
+
+  it('Should read() without args works', async () => {
+    try {
+      const ret = await bcr.read()
+
+      assert(!! ret, 'IDData invalid')
+    }
+    catch (ex) {
+      assert(false, ex)
+    }
+  })
 })
