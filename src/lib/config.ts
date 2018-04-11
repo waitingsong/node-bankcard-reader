@@ -6,7 +6,7 @@ import {
 
 // 初始化参数
 export const initialOpts: Options = {
-  cardType: 'fj',
+  cardType: 'auto',
   debug: false,
   dllPath: '',
   findCardRetryTimes: 5,

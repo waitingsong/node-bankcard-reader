@@ -13,9 +13,9 @@ describe(filename, () => {
 
   it('Should read() works', async () => {
     const opts: Options = {
-      cardType: 'fj',
+      cardType: 'auto',
       debug: false,
-      dllPath: 'd:/drivers/vs/hsbankcardinfo.dll',
+      dllPath: 'hsbankcardinfo.dll',
     }
 
     try {

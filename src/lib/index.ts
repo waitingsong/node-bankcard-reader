@@ -20,11 +20,21 @@ export async function read(args: Options): Promise<string> {
     switch (opts.cardType) {
       case 'fj':
         return readFJ(api)
+
       case 'jc':
         return readJC(api)
-    }
 
-    throw new Error('cardType invalid')
+      case 'auto':
+        try {
+          return readFJ(api) || readJC(api) || ''
+        }
+        catch (ex) {
+          return ''
+        }
+
+      default:
+        throw new Error('cardType invalid')
+    }
   })
 }
 

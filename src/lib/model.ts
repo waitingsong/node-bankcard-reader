@@ -23,5 +23,4 @@ export interface DllFuncsModel {
   // ReadCard(time: string, data2: Buffer, nlen2: Buffer, data3: Buffer, nlen3: Buffer): number  // 读2、3磁道数据
 }
 
-
-export type CardType = 'jc' | 'fj' | 'ct' // 接触，非接触，磁条
+export type CardType = 'jc' | 'fj' | 'auto' // 接触，非接触，auto轮询
