@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@types/ffi": "*",
+    "@waiting/log": "^1.0.1",
     "ffi": "git+https://github.com/node-ffi/node-ffi.git",
     "rxjs": ">=6.2.0",
     "win32-def": "^2.0.0"

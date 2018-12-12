@@ -1,10 +1,10 @@
+import { info } from '@waiting/log'
 import * as ffi from 'ffi'
 import { DTypes as DT } from 'win32-def'
 
 import {
   isPathAcessible,
   join,
-  logger,
   normalize,
 } from '../shared/index'
 
@@ -52,7 +52,7 @@ async function init(args?: Options): Promise<[DeviceOptions, DllFuncsModel]> {
   await validateDllFiles(opts.dllPath)
   opts.dllPath = normalize(opts.dllPath)
   opts.debug = !! opts.debug
-  opts.debug && logger(opts)
+  opts.debug && info(opts)
   SetDllDirectory(opts.dllSearchPath)
 
   return [opts, <DllFuncsModel> ffi.Library(opts.dllPath, dllFuncs)]
