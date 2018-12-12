@@ -1,30 +1,27 @@
 {
-  "name": "bankcard-reader",
+  "name": "npm-base",
   "author": "waiting",
-  "version": "0.4.2",
-  "description": "高拍仪读取银行卡",
+  "version": "0.0.1",
+  "description": "npm boilerplate",
   "keywords": [
-    "bankcard",
-    "rfic",
-    "高拍仪",
-    "银行卡",
-    "非接触"
+    "typescript"
   ],
   "engines": {
     "node": ">=8.10.0"
   },
+  "bin": {},
   "browser": "",
   "es2015": "./dist/index.esm.js",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bugs": {
-    "url": "https://github.com/waitingsong/node-bankcard-reader/issues"
+    "url": "https://github.com/waitingsong/npm-base/issues"
   },
-  "homepage": "https://github.com/waitingsong/node-bankcard-reader#readme",
+  "homepage": "https://github.com/waitingsong/npm-base#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/waitingsong/node-bankcard-reader.git"
+    "url": "git+https://github.com/waitingsong/npm-base.git"
   },
   "license": "MIT",
   "nyc": {
@@ -32,7 +29,7 @@
       "**/*.js",
       "**/*.test.ts",
       "**/*.d.ts",
-      "test",
+      "test*",
       "dist",
       "src/bin"
     ],
@@ -47,41 +44,34 @@
     "all": true
   },
   "dependencies": {
-    "ffi": "^2.2.0",
-    "win32-def": "^2.0.0"
+    "rxjs": ">=6.2.0"
   },
-  "os": [
-    "win32"
-  ],
   "devDependencies": {
-    "@types/ffi": "^0.1.0",
-    "@types/mocha": "^5.2.2",
-    "@types/node": "^10.3.2",
-    "@types/power-assert": "^1.5.0",
-    "@types/rewire": "^2.5.28",
-    "@types/rimraf": "^2.0.2",
-    "@types/yargs": "^11.0.0",
+    "@types/mocha": "*",
+    "@types/node": "*",
+    "@types/power-assert": "*",
+    "@types/rewire": "*",
+    "@types/rimraf": "*",
+    "@types/yargs": "*",
     "coveralls": "^3.0.0",
-    "eslint": "^4.19.1",
+    "eslint": "^5.4.0",
     "intelli-espower-loader": "^1.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
-    "mz-modules": "^2.1.0",
-    "nyc": "^12.0.2",
-    "power-assert": "^1.5.0",
+    "nyc": "^13.0.1",
+    "power-assert": ">=1.5",
     "rewire": "^4.0.0",
     "rimraf": "^2.6.2",
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-uglify": "^3.0.0",
-    "rxjs": "^6.2.0",
+    "rollup-plugin-terser": "^3.0.0",
     "source-map-support": "^0.5.6",
-    "ts-node": "^6.1.1",
-    "tslint": "^5.10.0",
-    "tslint-eslint-rules": "^5.3.1",
-    "typescript": "^2.9.1",
-    "yargs": "^11.1.0"
+    "ts-node": ">=7",
+    "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": ">=3",
+    "yargs": "^12.0.1"
   },
   "scripts": {
     "bp:add": "git remote add bp https://github.com/waitingsong/npm-base",
@@ -98,6 +88,8 @@
     "rp": "rollup -c rollup.config.js",
     "rp:w": "npm run tsc:w | rollup -wc rollup.config.js",
     "test": "mocha --opts test/mocha.opts",
+    "test:browser": "cd .config && npm run browser && cd ..",
+    "test:debug": "cd .config && npm run debug && cd ..",
     "tsc": "tsc -p tsconfig.json",
     "tsc:w": "tsc -p tsconfig.json -w"
   }
