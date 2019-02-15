@@ -1,12 +1,11 @@
 import { info } from '@waiting/log'
-import * as ffi from 'ffi'
-import { DTypes as DT } from 'win32-def'
-
 import {
-  isPathAcessible,
+  isPathAccessible,
   join,
   normalize,
-} from '../shared/index'
+} from '@waiting/shared-core'
+import * as ffi from 'ffi'
+import { DTypes as DT } from 'win32-def'
 
 import { dllFuncs, initialOpts } from './config'
 import {
@@ -100,7 +99,7 @@ async function validateDllFiles(path: string): Promise<void> {
     return
   }
   // absolute path
-  if (await isPathAcessible(path)) {
+  if (await isPathAccessible(path)) {
     return
   }
   throw new Error('File not exists: ' + path)

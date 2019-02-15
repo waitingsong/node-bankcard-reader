@@ -1,11 +1,11 @@
 /// <reference types="mocha" />
 
+import { join } from '@waiting/shared-core'
 import { basename } from 'path'
 import * as assert from 'power-assert'
 
 import * as bcr from '../src/lib/index'
 import { Options } from '../src/lib/model'
-import { join } from '../src/shared/index'
 
 
 const filename = basename(__filename)
