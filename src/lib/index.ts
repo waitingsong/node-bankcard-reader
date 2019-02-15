@@ -1,13 +1,12 @@
 import { info } from '@waiting/log'
 import {
   isPathAccessible,
-  join,
   normalize,
 } from '@waiting/shared-core'
 import * as ffi from 'ffi'
 // import { DTypes as DT } from 'win32-def'
 
-import { dllFuncs, initialConfig, initialOpts } from './config'
+import { dllFuncs, initialOpts } from './config'
 import {
   DeviceOptions,
   DllFuncsModel,
