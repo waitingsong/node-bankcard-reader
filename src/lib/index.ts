@@ -5,13 +5,13 @@ import {
   normalize,
 } from '@waiting/shared-core'
 import * as ffi from 'ffi'
-import { DTypes as DT } from 'win32-def'
+// import { DTypes as DT } from 'win32-def'
 
-import { dllFuncs, initialOpts } from './config'
+import { dllFuncs, initialConfig, initialOpts } from './config'
 import {
   DeviceOptions,
   DllFuncsModel,
-  Kernel32Model,
+  // Kernel32Model,
   Options,
 } from './model'
 
@@ -46,7 +46,7 @@ async function init(args?: Options): Promise<[DeviceOptions, DllFuncsModel]> {
   const opts = <DeviceOptions> (args ? { ...initialOpts, ...args } : { ...initialOpts })
 
   if (typeof opts.dllPath === 'undefined' || !opts.dllPath) {
-    opts.dllPath = join(__dirname, '../../dll/HSBankCardInfo.dll')
+    throw new Error('Value of opts.dllPath invalid')
   }
   await validateDllFiles(opts.dllPath)
   opts.dllPath = normalize(opts.dllPath)
@@ -58,18 +58,22 @@ async function init(args?: Options): Promise<[DeviceOptions, DllFuncsModel]> {
 }
 
 // set loading path of ssse32.dll
-function SetDllDirectory(path: any): boolean {
-  const k32Funcs = {
-    SetDllDirectoryW: [DT.BOOLEAN, [DT.LPCSTR] ],
-    // GetDllDirectoryW: ['int', ['int', 'pointer'] ],
+function SetDllDirectory(path: any): void {
+  if (path && typeof path === 'string') {
+    // fix for use of require('bankcard-reader')
+    process.env.PATH = `${process.env.PATH};${path}`
   }
-  const k32 = <Kernel32Model> ffi.Library('kernel32', k32Funcs)
-  const search = path && typeof path === 'string' ? path : join(__dirname, '../../dll')
+  // const k32Funcs = {
+  //   SetDllDirectoryW: [DT.BOOLEAN, [DT.LPCSTR] ],
+  //   // GetDllDirectoryW: ['int', ['int', 'pointer'] ],
+  // }
+  // const k32 = <Kernel32Model> ffi.Library('kernel32', k32Funcs)
+  // const search = path && typeof path === 'string' ? path : join(initialConfig.appDir, 'dll')
 
   // fix for use of require('bankcard-reader')
-  process.env.PATH = `${process.env.PATH};${search}`
+  // process.env.PATH = `${process.env.PATH};${search}`
 
-  return k32.SetDllDirectoryW(Buffer.from(search))
+  // return k32.SetDllDirectoryW(Buffer.from(search))
 }
 
 function readFJ(api: DllFuncsModel): string {
