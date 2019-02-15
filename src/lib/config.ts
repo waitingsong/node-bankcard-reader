@@ -1,8 +1,13 @@
 import {
+  Config,
   DllFuncs,
   Options,
 } from './model'
 
+
+export const initialConfig: Config = {
+  appDir: '',
+}
 
 // 初始化参数
 export const initialOpts: Options = {

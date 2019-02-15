@@ -1,5 +1,9 @@
 import { DModel as DM } from 'win32-def'
 
+export interface Config {
+  appDir: string  // base directory of this module
+}
+
 export interface Options {
   cardType?: CardType
   debug?: boolean
