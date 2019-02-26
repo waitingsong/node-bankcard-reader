@@ -2,13 +2,13 @@
   "name": "bankcard-reader",
   "author": "waiting",
   "version": "0.4.4",
-  "description": "¸ßÅÄÒÇ¶ÁÈ¡ÒøÐÐ¿¨",
+  "description": "é«˜æ‹ä»ªè¯»å–é“¶è¡Œå¡",
   "keywords": [
     "bankcard",
     "rfic",
-    "¸ßÅÄÒÇ",
-    "ÒøÐÐ¿¨",
-    "·Ç½Ó´¥"
+    "é«˜æ‹ä»ª",
+    "é“¶è¡Œå¡",
+    "éžæŽ¥è§¦"
   ],
   "engines": {
     "node": ">=8.10.0"
@@ -50,10 +50,10 @@
   "dependencies": {
     "@types/ffi": "*",
     "@waiting/log": "^1.0.1",
-    "@waiting/shared-core": "^1.3.0",
-    "ffi": "git+https://github.com/node-ffi/node-ffi.git",
-    "rxjs": "^6.3.2",
-    "win32-def": "^2.0.0"
+    "@waiting/shared-core": "^1.3.3",
+    "ffi": "^2.3.0",
+    "rxjs": "^6.4.0",
+    "win32-def": "^2.8.0"
   },
   "os": [
     "win32"
@@ -76,7 +76,7 @@
     "rollup-plugin-commonjs": "^9.1.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-terser": "^4.0.2",
-    "rxrunscript": "^5.1.0",
+    "rxrunscript": "^5.2.0",
     "source-map-support": "^0.5.6",
     "ts-node": "^8.0.1",
     "tslint": "^5.12.1",
