@@ -1,6 +1,8 @@
-import { initialConfig } from './lib/config'
+import { config } from './lib/config'
 
 /* istanbul ignore next */
-initialConfig.appDir = __dirname + '/..'
+config.appDir = __dirname + '/..'
 
 export * from './lib/index'
+export * from './lib/model'
+export { initialOpts } from './lib/config'

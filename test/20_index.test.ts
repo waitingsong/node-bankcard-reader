@@ -18,29 +18,20 @@ describe(filename, () => {
     const opts: Options = {
       cardType: 'auto',
       debug: false,
-      dllPath: dll,
+      dllTxt: dll,
       dllSearchPath,
     }
 
     try {
-      const ret = await bcr.read(opts)
+      const devices = await bcr.init(opts)
+      const ret = await bcr.read(devices[0])
 
       console.info(ret)
       assert(!! ret, 'IDData invalid')
+      assert(ret && ret.cardno, 'card number invalid')
     }
     catch (ex) {
       assert(false, ex)
-    }
-  })
-
-  it('Should read() without args works', async () => {
-    try {
-      const ret = await bcr.read()
-
-      assert(!! ret, 'IDData invalid')
-    }
-    catch (ex) {
-      assert(true)
     }
   })
 })

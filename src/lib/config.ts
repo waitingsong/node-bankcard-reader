@@ -1,23 +1,20 @@
-import { DTypes as W, FModel as FM } from 'win32-def'
+import {
+  DTypes as W,
+  FModel as FM,
+} from 'win32-def'
 
 import {
   Config,
-  Options,
 } from './model'
 
 
-export const initialConfig: Config = {
+export {
+  initialOpts,
+} from '@waiting/bankcard-reader-base'
+
+export const config: Config = {
   appDir: '',
 }
-
-// 初始化参数
-export const initialOpts: Options = {
-  cardType: 'auto',
-  debug: false,
-  dllPath: '',
-  dllSearchPath: '',
-}
-
 
 export const dllFuncs: FM.DllFuncs = {
   JC_GetBankNumber: [W.INT, [W.POINT] ], // 接触获取银行卡卡号
